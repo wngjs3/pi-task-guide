@@ -101,6 +101,32 @@ body, html {
 
 /* Animation */
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
+}
+
+/* Action Buttons */
+.action-btn {
+    margin-top: 3rem;
+    padding: 1.5rem 3rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.action-btn:active {
+    transform: translateY(-2px);
 }

@@ -45,6 +45,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Button Event Listeners
+    document.getElementById('btn-start').addEventListener('click', () => sendCommand('/api/start'));
+    document.getElementById('btn-end').addEventListener('click', () => sendCommand('/api/end'));
+    document.getElementById('btn-reset').addEventListener('click', () => sendCommand('/api/reset'));
+
+    async function sendCommand(url) {
+        try {
+            await fetch(url, { method: 'POST' });
+            pollStatus(); // Update immediately
+        } catch (error) {
+            console.error('Error sending command:', error);
+        }
+    }
+
     // Poll every 500ms
     setInterval(pollStatus, 500);
 });

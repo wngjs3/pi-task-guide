@@ -79,6 +79,30 @@ Add the following line to the end:
 - **Reset**: `POST /api/reset`
 - **Set Task Text**: `POST /api/task` (JSON body: `{"task": "New task description"}`)
 
+## Remote Control Examples (curl)
+
+Replace `<raspberry-pi-ip>` with your actual IP address (e.g., `192.168.219.108`).
+
+**1. Start Task:**
+```bash
+curl -X POST http://<raspberry-pi-ip>:5001/api/start
+```
+
+**2. Set Task Description:**
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"task": "Move towards the target"}' http://<raspberry-pi-ip>:5001/api/task
+```
+
+**3. End Task:**
+```bash
+curl -X POST http://<raspberry-pi-ip>:5001/api/end
+```
+
+**4. Reset to Ready:**
+```bash
+curl -X POST http://<raspberry-pi-ip>:5001/api/reset
+```
+
 ## Control Panel
 
-Access the control panel at `http://<raspberry-pi-ip>:5000/control` to manually switch states and update tasks.
+Access the control panel at `http://<raspberry-pi-ip>:5001/control` to manually switch states and update tasks.
