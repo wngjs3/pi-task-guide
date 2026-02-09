@@ -11,16 +11,16 @@ current_task_text = "Waiting for task..."
 
 # Predefined tasks
 TASKS = [
-    "Move the red apple to the basket",
-    "Pick up the blue pen",
-    "Go to the kitchen",
-    "Find the water bottle",
-    "Clean the table",
-    "Deliver the package to the living room",
-    "Turn on the light",
-    "Open the door",
-    "Greet the guest",
-    "Charge the battery"
+    "Pick up the red apple",
+    "Place the apple in the basket",
+    "Push the box to the edge",
+    "Stack the blue block on the red block",
+    "Open the drawer",
+    "Close the drawer",
+    "Pour water into the cup",
+    "Wipe the table surface",
+    "Grasp the bottle handle",
+    "Sort the objects by color"
 ]
 
 @app.route('/')
