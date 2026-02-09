@@ -2,10 +2,26 @@ from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
 
+import random
+
 # Global state
 # State options: 'READY', 'TASK', 'END'
 current_state = 'READY'
 current_task_text = "Waiting for task..."
+
+# Predefined tasks
+TASKS = [
+    "Move the red apple to the basket",
+    "Pick up the blue pen",
+    "Go to the kitchen",
+    "Find the water bottle",
+    "Clean the table",
+    "Deliver the package to the living room",
+    "Turn on the light",
+    "Open the door",
+    "Greet the guest",
+    "Charge the battery"
+]
 
 @app.route('/')
 def index():
@@ -25,9 +41,15 @@ def get_status():
 
 @app.route('/api/start', methods=['POST'])
 def start_task():
-    global current_state
+    global current_state, current_task_text
     current_state = 'TASK'
-    return jsonify({'status': 'success', 'new_state': current_state})
+    # Select a random task
+    current_task_text = random.choice(TASKS)
+    return jsonify({
+        'status': 'success', 
+        'new_state': current_state,
+        'task': current_task_text
+    })
 
 @app.route('/api/end', methods=['POST'])
 def end_task():
