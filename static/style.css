@@ -121,7 +121,7 @@ body, html {
 
 /* Action Buttons */
 .action-btn {
-    margin-top: 3rem;
+    margin: 1rem;
     padding: 1.5rem 3rem;
     font-size: 2rem;
     font-weight: bold;
@@ -136,12 +136,71 @@ body, html {
     letter-spacing: 1px;
 }
 
+.experiment-btn {
+    background: rgba(139, 92, 246, 0.3); /* Purple tint for experiment */
+    border-color: rgba(139, 92, 246, 0.6);
+}
+
 .action-btn:hover {
     background: rgba(255, 255, 255, 0.4);
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
+.experiment-btn:hover {
+    background: rgba(139, 92, 246, 0.5);
+}
+
 .action-btn:active {
     transform: translateY(-2px);
+}
+
+.button-group {
+    display: flex;
+    gap: 20px;
+}
+
+/* Survey Screen */
+#survey-screen h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.likert-scale {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 1rem;
+}
+
+.likert-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.likert-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.likert-btn:active {
+    background: #fff;
+    color: #000;
+}
+
+.likert-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 650px;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    margin-top: 10px;
 }
