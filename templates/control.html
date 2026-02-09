@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f0f0f0; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; }
+        h1 { text-align: center; }
+        .btn-group { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
+        button { padding: 10px 20px; font-size: 16px; min-width: 100px; cursor: pointer; border: none; border-radius: 4px; color: white; transition: opacity 0.2s; }
+        button:hover { opacity: 0.9; }
+        .btn-ready { background-color: #1e3a8a; }
+        .btn-start { background-color: #065f46; }
+        .btn-end { background-color: #7f1d1d; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        input[type="text"] { flex: 1; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; }
+        #status-display { text-align: center; margin-top: 20px; font-weight: bold; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Control Panel</h1>
+        
+        <div class="input-group">
+            <input type="text" id="task-input" placeholder="Enter task description...">
+            <button onclick="updateTask()" style="background-color: #4b5563;">Update Task</button>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn-ready" onclick="sendCommand('/api/reset')">Reset (Ready)</button>
+            <button class="btn-start" onclick="sendCommand('/api/start')">Start Task</button>
+            <button class="btn-end" onclick="sendCommand('/api/end')">End Task</button>
+        </div>
+
+        <div id="status-display">Status: Loading...</div>
+    </div>
+
+    <script>
+        async function sendCommand(url) {
+            try {
+                const res = await fetch(url, { method: 'POST' });
+                const data = await res.json();
+                console.log(data);
+                fetchStatus(); // Update status immediately
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function updateTask() {
+            const task = document.getElementById('task-input').value;
+            if (!task) return;
+            try {
+                await fetch('/api/task', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ task: task })
+                });
+                fetchStatus();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function fetchStatus() {
+            try {
+                const res = await fetch('/api/status');
+                const data = await res.json();
+                document.getElementById('status-display').textContent = `Current State: ${data.state} | Task: ${data.task}`;
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        // Poll status for the control panel too
+        setInterval(fetchStatus, 1000);
+        fetchStatus();
+    </script>
+</body>
+</html>

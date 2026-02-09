@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Task Display</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container" class="container ready">
+        <div id="ready-screen" class="screen">
+            <h1>Get Ready</h1>
+            <div class="loader"></div>
+        </div>
+        <div id="task-screen" class="screen hidden">
+            <h2>Current Task</h2>
+            <p id="task-text">Task description goes here...</p>
+        </div>
+        <div id="end-screen" class="screen hidden">
+            <h1>Task Completed</h1>
+            <p>Thank you!</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
