@@ -66,6 +66,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Poll every 500ms
     setInterval(pollStatus, 500);
 });
-    // Poll every 500ms
-    setInterval(pollStatus, 500);
-});
