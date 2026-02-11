@@ -9,44 +9,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="container" class="container ready">
-        <div id="ready-screen" class="screen">
-            <h1>RISE Lab</h1>
+    <div id="container" class="container idle">
+        <div id="idle-screen" class="screen">
+            <h1>System Ready</h1>
+            <p>Waiting for command...</p>
+            <div class="ip-display">IP: <span id="ip-address">Loading...</span></div>
             <div class="loading-container">
                 <div class="dot"></div>
                 <div class="dot"></div>
                 <div class="dot"></div>
             </div>
-            <div class="button-group">
-                <button id="btn-start-data" class="action-btn">Data Collection</button>
-                <button id="btn-start-exp" class="action-btn experiment-btn">Experiment</button>
-            </div>
         </div>
         <div id="task-screen" class="screen hidden">
-            <h2>Current Task</h2>
+            <h2 id="status-label">Current Task</h2>
             <p id="task-text">Task description goes here...</p>
-            <button id="btn-end" class="action-btn">Complete Task</button>
-        </div>
-        <div id="survey-screen" class="screen hidden">
-            <h2>Rate Your Satisfaction</h2>
-            <div class="likert-scale">
-                <button class="likert-btn" data-value="1">1</button>
-                <button class="likert-btn" data-value="2">2</button>
-                <button class="likert-btn" data-value="3">3</button>
-                <button class="likert-btn" data-value="4">4</button>
-                <button class="likert-btn" data-value="5">5</button>
-                <button class="likert-btn" data-value="6">6</button>
-                <button class="likert-btn" data-value="7">7</button>
-            </div>
-            <div class="likert-labels">
-                <span>Very Dissatisfied</span>
-                <span>Very Satisfied</span>
-            </div>
         </div>
         <div id="end-screen" class="screen hidden">
             <h1>Task Completed</h1>
-            <p>Thank you!</p>
-            <button id="btn-reset" class="action-btn">Reset</button>
+            <div class="checkmark">✓</div>
         </div>
     </div>
 
