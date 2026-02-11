@@ -27,7 +27,7 @@ device_ip = get_ip_address()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', ip=device_ip)
 
 @app.route('/control')
 def control():
@@ -36,6 +36,11 @@ def control():
 @app.route('/api/status')
 def get_status():
     global current_state, current_task_text, device_ip
+    
+    # Retry fetching IP if it's currently localhost or unknown, and network might be up now
+    if device_ip in ["127.0.0.1", "Unknown"]:
+        device_ip = get_ip_address()
+        
     return jsonify({
         'state': current_state,
         'task': current_task_text,
