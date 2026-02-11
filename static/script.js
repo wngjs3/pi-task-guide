@@ -1,5 +1,7 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('container');
     const idleScreen = document.getElementById('idle-screen');
-    const taskScreen = document.getElementById('task-text').parentElement; // Get the task screen container
+    const taskScreen = document.getElementById('task-screen');
     const endScreen = document.getElementById('end-screen');
     const taskText = document.getElementById('task-text');
     const statusLabel = document.getElementById('status-label');
@@ -8,6 +10,8 @@
     let processing = false;
 
     function updateDisplay(data) {
+        console.log("Updating display with state:", data.state);
+        
         // Update IP if available
         if (data.ip) {
             ipAddressSpan.textContent = data.ip;
