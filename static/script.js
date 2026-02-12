@@ -42,17 +42,34 @@ document.addEventListener('DOMContentLoaded', () => {
             taskScreen.classList.remove('hidden');
             container.classList.add('ready');
             statusLabel.textContent = "Get Ready";
+            statusLabel.textContent = "Get Ready";
             taskText.textContent = data.task;
+            adjustFontSize();
         } 
         else if (data.state === 'START') {
             taskScreen.classList.remove('hidden');
             container.classList.add('start-mode');
             statusLabel.textContent = "Task in Progress";
             taskText.textContent = data.task;
+            adjustFontSize();
         } 
         else if (data.state === 'END') {
             endScreen.classList.remove('hidden');
             container.classList.add('end-mode');
+        }
+    }
+
+    function adjustFontSize() {
+        // Reset to default large size first
+        let size = 4.5;
+        const minSize = 1.5;
+        taskText.style.fontSize = `${size}rem`;
+
+        // Check if content overflows the window height
+        // We use a small buffer (e.g., 20px) to be safe
+        while (document.body.scrollHeight > window.innerHeight && size > minSize) {
+            size -= 0.2; // Decrease in smaller steps for smoother fit
+            taskText.style.fontSize = `${size}rem`;
         }
     }
 
