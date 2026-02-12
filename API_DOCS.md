@@ -99,7 +99,24 @@ Returns the current state of the display.
 }
 ```
 
+
+---
+
+### 6. Control Emotions
+You can control the robot's facial expression independently or along with other states.
+Supported emotions: `neutral`, `happy`, `angry`, `sad`, `surprised`, `sleeping`.
+
+**Standalone Emotion Change:**
+*   **Method:** `POST`
+*   **URL:** `/api/emotion`
+*   **Body:** `{"emotion": "happy"}`
+
 **Example (curl):**
 ```bash
-curl http://<raspberry-pi-ip>:5001/api/status
+curl -X POST -H "Content-Type: application/json" -d '{"emotion": "happy"}' http://<raspberry-pi-ip>:5001/api/emotion
+```
+
+**Combined with Task (e.g., Start with Angry face):**
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"emotion": "angry"}' http://<raspberry-pi-ip>:5001/api/start
 ```

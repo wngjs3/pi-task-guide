@@ -6,15 +6,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskText = document.getElementById('task-text');
     const statusLabel = document.getElementById('status-label');
     const ipAddressSpan = document.getElementById('ip-address');
+    const faceContainer = document.getElementById('face-container');
 
     let processing = false;
 
     function updateDisplay(data) {
-        console.log("Updating display with state:", data.state);
-        
         // Update IP if available
         if (data.ip) {
             ipAddressSpan.textContent = data.ip;
+        }
+
+        // Update Emotion
+        if (data.emotion) {
+            // Remove previous emotion classes
+            faceContainer.className = '';
+            // Add new emotion class if not neutral (neutral is default style)
+            if (data.emotion !== 'neutral') {
+                faceContainer.classList.add(data.emotion);
+            }
         }
 
         // Reset all screens
