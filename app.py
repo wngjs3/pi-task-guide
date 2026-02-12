@@ -2,7 +2,15 @@ from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
 
-import socket
+import logging
+from werkzeug.serving import WSGIRequestHandler
+
+# Filter out /api/status from logs
+class CustomRequestHandler(WSGIRequestHandler):
+    def log_request(self, code='-', size='-'):
+        if '/api/status' in self.path:
+            return
+        super().log_request(code, size)
 
 # Global state
 # State options: 'IDLE', 'READY', 'START', 'END'
@@ -11,6 +19,7 @@ current_task_text = ""
 current_emotion = "neutral"
 device_ip = "Unknown"
 
+# ... (get_ip_address function remains the same) ...
 def get_ip_address():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -55,6 +64,7 @@ def set_emotion():
     data = request.json
     if data and 'emotion' in data:
         current_emotion = data['emotion']
+        print(f"😊 Emotion Changed: {current_emotion}") # Custom Log
         return jsonify({'status': 'success', 'emotion': current_emotion})
     return jsonify({'status': 'error', 'message': 'No emotion provided'}), 400
 
@@ -69,6 +79,7 @@ def set_ready():
             current_emotion = data['emotion']
     
     current_state = 'READY'
+    print(f"🟡 READY State: Task='{current_task_text}', Emotion='{current_emotion}'") # Custom Log
     return jsonify({'status': 'success', 'state': current_state, 'task': current_task_text, 'emotion': current_emotion})
 
 @app.route('/api/start', methods=['POST'])
@@ -79,6 +90,7 @@ def start_task():
         current_emotion = data['emotion']
 
     current_state = 'START'
+    print(f"🟢 START Task: Emotion='{current_emotion}'") # Custom Log
     return jsonify({'status': 'success', 'state': current_state, 'emotion': current_emotion})
 
 @app.route('/api/end', methods=['POST'])
@@ -91,6 +103,7 @@ def end_task():
         current_emotion = "happy" # Default to happy on success
 
     current_state = 'END'
+    print(f"🔴 END Task: Emotion='{current_emotion}'") # Custom Log
     return jsonify({'status': 'success', 'state': current_state, 'emotion': current_emotion})
 
 @app.route('/api/reset', methods=['POST'])
@@ -99,6 +112,7 @@ def reset_task():
     current_state = 'IDLE'
     current_task_text = ""
     current_emotion = "neutral"
+    print("⚪ RESET System") # Custom Log
     return jsonify({'status': 'success', 'state': current_state, 'emotion': current_emotion})
 
 @app.route('/api/task', methods=['POST'])
@@ -107,8 +121,10 @@ def set_task():
     data = request.json
     if data and 'task' in data:
         current_task_text = data['task']
+        print(f"📝 Task Text Updated: {current_task_text}") # Custom Log
         return jsonify({'status': 'success', 'task': current_task_text})
     return jsonify({'status': 'error', 'message': 'No task provided'}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    # Disable default access logs for status checks
+    app.run(host='0.0.0.0', port=5001, debug=True, request_handler=CustomRequestHandler)
