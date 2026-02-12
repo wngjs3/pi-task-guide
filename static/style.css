@@ -40,6 +40,22 @@ body, html {
 .hidden {
     display: none !important;
 }
+/* Mode Screen Styling */
+.idle {
+    background-color: #0f172a; /* Slate 900 */
+}
+
+.ready {
+    background-color: #ca8a04; /* Yellow-600 for Get Ready */
+}
+
+.start-mode {
+    background-color: #166534; /* Green-700 for Task Running */
+}
+
+.end-mode {
+    background-color: #1a1a1a; 
+}
 
 /* ... existing code ... */
 
