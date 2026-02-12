@@ -28,84 +28,21 @@ body, html {
 .screen {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Vertically center content */
     align-items: center;
     width: 100%;
     height: 100%;
     animation: fadeIn 0.5s ease-in-out;
+    padding-top: 180px; /* Reserve space for eyes */
+    box-sizing: border-box; /* Include padding in height */
 }
 
-.hidden {
-    display: none !important;
-}
-
-/* Mode Screen Styling */
-.idle {
-    background-color: #0f172a; /* Slate 900 */
-}
-
-.ready {
-    background-color: #ca8a04; /* Yellow-600 for Get Ready */
-}
-
-.start-mode {
-    background-color: #166534; /* Green-700 for Task Running */
-}
-
-.end-mode {
-    background-color: #1a1a1a; 
-}
-
-
-/* Idle Screen */
-#idle-screen h1 {
-    font-size: 5rem;
-    margin-bottom: 30px;
-}
-.ip-display {
-    font-size: 2.5rem;
-    color: #94a3b8; /* Slate 400 */
-    margin-top: 20px;
-    margin-bottom: 40px;
-    font-family: monospace;
-    background: rgba(255,255,255,0.05);
-    padding: 1rem 2rem;
-    border-radius: 10px;
-}
-
-/* Common Text Styling */
-#task-text {
-    font-size: 4rem;
-    font-weight: bold;
-    line-height: 1.3;
-    padding: 0 50px;
-}
-
-#status-label {
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    opacity: 0.8;
-    margin-bottom: 2rem;
-}
-
-/* End Screen */
-.checkmark {
-    font-size: 15rem;
-    color: #4ade80; /* Green-400 */
-    text-shadow: 0 0 30px rgba(74, 222, 128, 0.5);
-    animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes scaleUp {
-    from { transform: scale(0); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
+/* ... existing code ... */
 
 /* Robot Eyes */
 #face-container {
     position: absolute;
-    top: 15%;
+    top: 60px; /* Fixed position from top */
     left: 0;
     width: 100%;
     display: flex;
