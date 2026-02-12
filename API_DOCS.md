@@ -104,7 +104,7 @@ Returns the current state of the display.
 
 ### 6. Control Emotions
 You can control the robot's facial expression independently or along with other states.
-Supported emotions: `neutral`, `happy`, `angry`, `sad`, `surprised`, `sleeping`.
+Supported emotions: `neutral`, `happy`, `angry`, `sad`, `surprised`, `sleeping`, `success` (O shape), `failure` (X shape).
 
 **Standalone Emotion Change:**
 *   **Method:** `POST`

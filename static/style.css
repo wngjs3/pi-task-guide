@@ -113,7 +113,80 @@ body, html {
     opacity: 0.7;
 }
 
-@keyframes blink {
-    0%, 90%, 100% { transform: scaleY(1); }
-    95% { transform: scaleY(0.1); }
+/* ... emotions ... */
+
+/* Success: Green O shape */
+.success .eye {
+    background-color: transparent;
+    border: 15px solid #4ade80; /* Green-400 */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: none;
+    box-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
 }
+
+/* Failure: Red X shape */
+.failure .eye {
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    border-radius: 0;
+    box-shadow: none;
+    animation: none;
+    position: relative;
+    transform: rotate(45deg); /* Rotate checking for left/right */
+}
+
+/* Create X using pseudo-elements */
+.failure .eye::before,
+.failure .eye::after {
+    content: '';
+    position: absolute;
+    background-color: #ef4444; /* Red-500 */
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+    border-radius: 10px;
+}
+
+.failure .eye::before {
+    width: 15px;
+    height: 120%;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.failure .eye::after {
+    width: 120%;
+    height: 15px;
+    top: 50%;
+    left: -10%;
+    transform: translateY(-50%);
+}
+
+/* Reset rotation for left/right specific if needed, or keep generic */
+.failure .eye.left { transform: rotate(45deg); }
+.failure .eye.right { transform: rotate(45deg); }
+
+
+/* Idle Screen Typography */
+#idle-screen h1 {
+    font-size: 2.5rem; /* Smaller size */
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+/* IP Display - Corner positioning */
+.ip-display {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.2rem;
+    color: #64748b; /* Slate 500 */
+    font-family: monospace;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+/* ... existing code ... */
