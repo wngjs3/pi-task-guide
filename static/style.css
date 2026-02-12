@@ -102,52 +102,81 @@ body, html {
     to { transform: scale(1); opacity: 1; }
 }
 
-.button-group {
+/* Robot Eyes */
+#face-container {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 100%;
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    gap: 60px;
+    z-index: 10;
+    pointer-events: none; /* Let clicks pass through */
 }
 
-/* Survey Screen */
-#survey-screen h2 {
-    font-size: 3rem;
-    margin-bottom: 3rem;
-}
-
-.likert-scale {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 1rem;
-}
-
-.likert-btn {
-    width: 80px;
-    height: 80px;
+.eye {
+    width: 100px;
+    height: 120px;
+    background-color: white;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    animation: blink 4s infinite;
 }
 
-.likert-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+/* Emotions */
+/* Happy: Inverted U shape */
+.happy .eye {
+    height: 60px;
+    border-radius: 50% 50% 0 0; /* Top half circle */
+    transform: translateY(20px);
+    animation: none; /* Stop blinking when happy */
+}
+
+/* Angry: Slanted inwards */
+.angry .eye.left {
+    border-radius: 50% 50% 0 50%;
+    transform: rotate(20deg);
+    height: 100px;
+}
+.angry .eye.right {
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-20deg);
+    height: 100px;
+}
+
+/* Sad: Slanted outwards */
+.sad .eye.left {
+    transform: rotate(-20deg);
+    border-radius: 50% 50% 50% 50%;
+    height: 90px;
+}
+.sad .eye.right {
+    transform: rotate(20deg);
+    border-radius: 50% 50% 50% 50%;
+    height: 90px;
+}
+
+/* Surprised: Wide open */
+.surprised .eye {
+    height: 140px;
+    width: 120px;
+    animation: none;
     transform: scale(1.1);
 }
 
-.likert-btn:active {
-    background: #fff;
-    color: #000;
+/* Sleeping: Closed lines */
+.sleeping .eye {
+    height: 10px;
+    width: 100px;
+    transform: translateY(50px);
+    animation: none;
+    border-radius: 10px;
+    opacity: 0.7;
 }
 
-.likert-labels {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 650px;
-    font-size: 1.5rem;
-    opacity: 0.8;
-    margin-top: 10px;
+@keyframes blink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
 }
