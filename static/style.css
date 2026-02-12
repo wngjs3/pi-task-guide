@@ -209,4 +209,23 @@ body, html {
     margin: 0;
 }
 
+/* Common Text Styling */
+#task-text {
+    font-size: 6rem; /* Very large for visibility */
+    font-weight: bold;
+    line-height: 1.2;
+    padding: 0 20px;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+#status-label {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
 /* ... existing code ... */
