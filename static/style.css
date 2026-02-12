@@ -242,4 +242,18 @@ body, html {
     font-weight: 300;
 }
 
+/* End Screen Checkmark */
+.checkmark {
+    font-size: 25rem; /* Very large checkmark */
+    color: #4ade80; /* Green-400 */
+    text-shadow: 0 0 40px rgba(74, 222, 128, 0.6);
+    animation: scaleUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: 20px;
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
 /* ... existing code ... */
