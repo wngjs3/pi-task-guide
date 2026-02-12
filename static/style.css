@@ -37,6 +37,10 @@ body, html {
     box-sizing: border-box; /* Include padding in height */
 }
 
+.hidden {
+    display: none !important;
+}
+
 /* ... existing code ... */
 
 /* Robot Eyes */
