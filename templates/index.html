@@ -18,14 +18,17 @@
         <div id="idle-screen" class="screen">
             <h1>System Ready</h1>
             <p>Waiting for command...</p>
-            <div class="ip-display">IP: <span id="ip-address">{{ ip }}</span></div>
-
+            
             <div class="loading-container">
                 <div class="dot"></div>
                 <div class="dot"></div>
                 <div class="dot"></div>
             </div>
         </div>
+        
+        <!-- Persistent IP in corner -->
+        <div class="ip-display">IP: <span id="ip-address">{{ ip }}</span></div>
+
         <div id="task-screen" class="screen hidden">
             <h2 id="status-label">Current Task</h2>
             <p id="task-text">Task description goes here...</p>
