@@ -225,12 +225,13 @@ body, html {
 
 /* Common Text Styling */
 #task-text {
-    font-size: 6rem; /* Very large for visibility */
+    font-size: 4.5rem; /* Reduced from 6rem to prevent cutoff */
     font-weight: bold;
-    line-height: 1.2;
+    line-height: 1.1;
     padding: 0 20px;
-    margin-top: 20px;
+    margin-top: 10px; /* Reduced margin */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    word-break: break-word; /* Ensure long words wrap properly */
 }
 
 #status-label {
@@ -238,8 +239,8 @@ body, html {
     text-transform: uppercase;
     letter-spacing: 3px;
     opacity: 0.9;
-    margin-bottom: 1rem;
-    margin-top: 80px; /* Push down to avoid eyes and center vertically */
+    margin-bottom: 0.5rem; /* Reduced gap */
+    margin-top: 80px; /* Keep the low position user liked */
     font-weight: 300;
 }
 
