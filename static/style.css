@@ -146,6 +146,20 @@ body, html {
     box-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
 }
 
+/* Excited: Happy + Bouncing */
+.excited .eye {
+    height: 60px;
+    border-radius: 50% 50% 0 0; /* Top half circle */
+    transform: translateY(20px);
+    animation: bounce 0.4s infinite alternate; /* Fast bounce */
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes bounce {
+    from { transform: translateY(20px); }
+    to { transform: translateY(10px); }
+}
+
 /* Failure: Red X shape */
 .failure .eye {
     background-color: transparent;
